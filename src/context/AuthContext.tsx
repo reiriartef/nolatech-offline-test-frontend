@@ -1,17 +1,19 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router";
-import { jwtDecode } from "jwt-decode";
+import {jwtDecode} from "jwt-decode";
 
 interface AuthContextType {
   auth: { token: string | null };
   isAuthenticated: boolean;
   setAuth: React.Dispatch<React.SetStateAction<{ token: string | null }>>;
+  logout: () => void;
 }
 
 const AuthContext = createContext<AuthContextType>({
   auth: { token: null },
   isAuthenticated: false,
   setAuth: () => {},
+  logout: () => {},
 });
 
 const isTokenValid = (token: string) => {
@@ -43,8 +45,15 @@ export const AuthProvider = ({ children }) => {
     }
   }, [navigate]);
 
+  const logout = () => {
+    localStorage.removeItem("token");
+    setAuth({ token: null });
+    setIsAuthenticated(false);
+    navigate("/auth");
+  };
+
   return (
-    <AuthContext.Provider value={{ auth, isAuthenticated, setAuth }}>
+    <AuthContext.Provider value={{ auth, isAuthenticated, setAuth, logout }}>
       {children}
     </AuthContext.Provider>
   );
