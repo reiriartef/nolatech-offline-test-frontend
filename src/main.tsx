@@ -1,5 +1,4 @@
 import React from "react";
-import "./index.css";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router";
@@ -32,11 +31,13 @@ if (rootElement) {
                 element={
                   <ProtectedRoute>
                     <DashboardLayout>
-                      <h1>Hola</h1>
+                      <Routes>
+                        <Route path="/profile" element={<h1>Profile</h1>} />
+                      </Routes>
                     </DashboardLayout>
                   </ProtectedRoute>
                 }
-              />
+              ></Route>
             </Routes>
           </AuthProvider>
         </BrowserRouter>
