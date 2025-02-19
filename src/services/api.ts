@@ -2,7 +2,7 @@ import axios from "axios";
 import { useAuth } from "../context/AuthContext";
 
 const api = axios.create({
-  baseURL: "http://localhost:3000/api", // Reemplaza con la URL de tu backend
+  baseURL: "https://nolatech-offline-test-backend.onrender.com/api", // Reemplaza con la URL de tu backend
 });
 
 interface EmployeeData {
