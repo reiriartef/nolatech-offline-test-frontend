@@ -48,7 +48,6 @@ const Topbar = () => {
   const getUserName = () => {
     if (auth.token) {
       const decoded: any = jwtDecode(auth.token);
-      console.log(decoded);
       return (
         decoded.employee.firstName + " " + decoded.employee.lastName ||
         "Usuario"
