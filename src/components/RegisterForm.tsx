@@ -20,7 +20,11 @@ const departments = [
   "Operations",
 ];
 
-function RegisterForm({ setActiveTab }) {
+interface RegisterFormProps {
+  setActiveTab: (tab: string) => void;
+}
+
+function RegisterForm({ setActiveTab }: RegisterFormProps) {
   const {
     register,
     handleSubmit,

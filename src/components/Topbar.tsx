@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { LogOut, User, FileChartLine } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
-import { useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import { jwtDecode } from "jwt-decode";
 
 const Topbar = () => {
@@ -9,6 +9,7 @@ const Topbar = () => {
   const { auth, logout } = useAuth();
   const dropdownRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     logout();
@@ -35,7 +36,10 @@ const Topbar = () => {
     switch (pathname) {
       case "/empleados":
         return "Empleados";
-      // Agrega más rutas aquí según sea necesario
+      case "/evaluaciones":
+        return "Evaluaciones";
+      case "/resultados":
+        return "Resultados";
       default:
         return "Dashboard";
     }
@@ -51,6 +55,11 @@ const Topbar = () => {
       );
     }
     return "Usuario";
+  };
+
+  const handleProfileClick = () => {
+    navigate("/profile");
+    setDropdownOpen(false);
   };
 
   return (
@@ -69,7 +78,10 @@ const Topbar = () => {
               className="absolute right-0 top-12 mt-2 w-48 bg-white border rounded shadow-lg"
             >
               <ul>
-                <li className="p-2 hover:bg-gray-100 cursor-pointer flex items-center">
+                <li
+                  className="p-2 hover:bg-gray-100 cursor-pointer flex items-center"
+                  onClick={handleProfileClick}
+                >
                   <FileChartLine className="mr-2" />
                   Perfil
                 </li>

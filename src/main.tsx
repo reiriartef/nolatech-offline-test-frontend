@@ -8,6 +8,9 @@ import { AuthProvider } from "./context/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
 import PublicRoute from "./components/PublicRoute";
 import DashboardLayout from "./layouts/DashboardLayout";
+import EmployeesScreen from "./pages/EmployeesScreen";
+import ProfileScreen from "./pages/ProfileScreen";
+import EvaluationScreen from "./pages/EvaluationScreen";
 const queryClient = new QueryClient();
 
 const rootElement = document.getElementById("root");
@@ -32,7 +35,15 @@ if (rootElement) {
                   <ProtectedRoute>
                     <DashboardLayout>
                       <Routes>
-                        <Route path="/profile" element={<h1>Profile</h1>} />
+                        <Route path="/profile" element={<ProfileScreen />} />
+                        <Route
+                          path="/empleados"
+                          element={<EmployeesScreen />}
+                        />
+                        <Route
+                          path="/evaluaciones"
+                          element={<EvaluationScreen />}
+                        />
                       </Routes>
                     </DashboardLayout>
                   </ProtectedRoute>
