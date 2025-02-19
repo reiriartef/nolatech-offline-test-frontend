@@ -11,6 +11,7 @@ import DashboardLayout from "./layouts/DashboardLayout";
 import EmployeesScreen from "./pages/EmployeesScreen";
 import ProfileScreen from "./pages/ProfileScreen";
 import EvaluationScreen from "./pages/EvaluationScreen";
+import DashboardScreen from "./pages/DashboardScreen";
 const queryClient = new QueryClient();
 
 const rootElement = document.getElementById("root");
@@ -35,6 +36,7 @@ if (rootElement) {
                   <ProtectedRoute>
                     <DashboardLayout>
                       <Routes>
+                        <Route path="/" element={<DashboardScreen />} />
                         <Route path="/profile" element={<ProfileScreen />} />
                         <Route
                           path="/empleados"
